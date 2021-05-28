@@ -57,9 +57,10 @@
       <div class="col">
         <h2>HTML</h2>
         <section class="row columns-memo">
-
+            <!-- Chaque colonne a un nom spécifique, incluant column-memo+un chiffre, ce qui sera réutilisé pour affecter une place aux cartes de manière automatique. -->
           <section class="col-3 column-memo1">
             <div class="d-flex align-items-center">
+              <!-- Le bouton s'appelle btn-add -->
               <button data-number="1" class="btn btn-success btn-add ml-0 mt-2 mr-2 mb-2" type ="button">+</button>
               <h3>A apprendre</h3>
             </div>
@@ -114,7 +115,7 @@
                 <label for="answer">Réponse</label>
                 <input type="text" class="form-control" id="answer" >
               </div>
-              
+              <!-- Chaque bouton s'affiche ou se cache selon le contexte d'utilisation de la modale -->
               <button id="submit-btn-add" type="button" class="btn btn-primary">Enregistrer</button>
               <button id="submit-btn-modify" type="button" class="btn btn-primary">Modifier</button>
               

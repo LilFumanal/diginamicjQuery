@@ -5,7 +5,6 @@ jQuery(function($){
   // Initiation de l'id de la card
   let cardID = 1;
   let card = null;
-  let currentCardID = null;
   
   /************ Gestion du click sur les boutons d'ajout de carte, récupère au clique sur le bouton + **********/
     $('.btn-add').on("click", function (event) {
@@ -32,6 +31,7 @@ jQuery(function($){
 
       // Cacher la modale
       $('#form-add-card').modal('hide');
+      // Incrémente l'id de la carte dès qu'une carte est enregistrée
       cardID++;
   });
 
@@ -41,18 +41,18 @@ jQuery(function($){
 
   function createDOMCard() {
     let html_card = "";
-
+    // l'id de la carte, pour que chacun aie un ID unique
     html_card += `<article class="mb-4 card bg-secondary p-1 pb-3 text-light" id="` + cardID + `">`;
     html_card += `<div class="d-flex">`;
     html_card += `<i class="fas fa-arrow-circle-left h3" ></i>`;
-    // Met la valeur de l'input #Question dans le h4 du html_card
+    // Met la valeur de l'input #Question dans le h4.question du html_card
     html_card += `<h4 class="pl-2 pr-2 question">` + $("#question").val() + `</h4>`;
     html_card += `<i class="fas fa-arrow-circle-right h3"></i>`;
     html_card += `<div class="ml-auto"><button class="btn btn-delete" type="button"><i class="far fa-trash-alt"></i></button></div>`;
     html_card += `</div>`;
     html_card += ` <div class="d-flex pl-2 pr-2 justify-content-between align-items-center flex-column">`;
     html_card += `<h5 class="pl-2 pr-2"> Réponse </h5>`;
-      // Met la valeur de l'input #Réponse dans le h5 du html_card
+      // Met la valeur de l'input #Réponse dans le p.answer du html_card
     html_card += `<p class="answer">` + $("#answer").val() + `</p>`;
     html_card += `<div class = "d-flex"><button class="btn btn-warning">Proposer une réponse</button>`;
     html_card += `<button class="btn btn-modify" type="button"><i class="fas fa-cog h3 m-0"></i></button></div>`;
@@ -76,6 +76,7 @@ jQuery(function($){
         // Chargement de la carte sélectionnée
         card = $(event.target).parents('article');
         $('#form-add-card').modal('show');
+        // Modification de la modale en conséquence
         $(".modal-title").text("Modifier une carte");
         $('#submit-btn-add').hide();
         $('#submit-btn-modify').show();
